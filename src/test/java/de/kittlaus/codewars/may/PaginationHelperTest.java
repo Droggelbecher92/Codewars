@@ -55,7 +55,45 @@ class PaginationHelperTest {
     }
 
     @Test
-    void pageItemCount() {
+    void pageItemCountShouldReturn1With5ItemsOnPage3() {
+        //GIVEN
+        List<String> items = List.of("Item1","Item2","Item3","Item4","Item5");
+        int itemsPerPage = 2;
+        PaginationHelper<String> testHelper = new PaginationHelper<>(items,itemsPerPage);
+        int expected = 1;
+
+        //WHEN
+        int actual = testHelper.pageItemCount(3);
+        //THEN
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void pageItemCountShouldReturn2With6ItemsOnPage3() {
+        //GIVEN
+        List<String> items = List.of("Item1","Item2","Item3","Item4","Item5","Item6");
+        int itemsPerPage = 2;
+        PaginationHelper<String> testHelper = new PaginationHelper<>(items,itemsPerPage);
+        int expected = 2;
+
+        //WHEN
+        int actual = testHelper.pageItemCount(3);
+        //THEN
+        assertEquals(expected,actual);
+    }
+
+    @Test
+    void pageItemCountShouldReturnNegativeWith4ItemsOnPage3() {
+        //GIVEN
+        List<String> items = List.of("Item1","Item2","Item3","Item4");
+        int itemsPerPage = 2;
+        PaginationHelper<String> testHelper = new PaginationHelper<>(items,itemsPerPage);
+        int expected = -1;
+
+        //WHEN
+        int actual = testHelper.pageItemCount(3);
+        //THEN
+        assertEquals(expected,actual);
     }
 
     @Test

@@ -63,7 +63,13 @@ public class PaginationHelper<I> {
      * this method should return -1 for pageIndex values that are out of range
      */
     public int pageItemCount(int pageIndex) {
-        return 0;
+        int allItems = collection.size();
+        if (pageIndex>pageCount()){
+            return -1;
+        } else if (allItems-(pageIndex*itemsPerPage)==0) {
+            return itemsPerPage;
+        }
+        return pageCount()%itemsPerPage;
     }
 
     /**
