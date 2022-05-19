@@ -69,7 +69,7 @@ class PaginationHelperTest {
     }
 
     @Test
-    void pageItemCountShouldReturn2With6ItemsOnPage3() {
+    void pageItemCountShouldReturn1With6ItemsOnPage3() {
         //GIVEN
         List<String> items = List.of("Item1","Item2","Item3","Item4","Item5","Item6");
         int itemsPerPage = 2;
