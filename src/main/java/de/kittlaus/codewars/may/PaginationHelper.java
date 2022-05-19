@@ -43,16 +43,20 @@ public class PaginationHelper<I> {
      * returns the number of items within the entire collection
      */
     public int itemCount() {
-        return 0;
-
+        return collection.size();
     }
 
     /**
      * returns the number of pages
      */
     public int pageCount() {
-        return 0;
-    }
+        return collection.size()%itemsPerPage==0
+                ?
+                collection.size()/itemsPerPage
+                :
+                collection.size()/itemsPerPage +1;
+        }
+
 
     /**
      * returns the number of items on the current page. page_index is zero based.
